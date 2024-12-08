@@ -1,0 +1,81 @@
+---
+title: "Function_Demos"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Function_Demos}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Function Demonstrations
+
+This vignette demonstrates the usage of three main functions from the `SA24204134` package: 
+`fibonacci_cpp`, and `lasso_elbow`.
+
+---
+
+## Example 1: Fibonacci Sequence with C++
+
+The fibonacci_cpp function calculates the Fibonacci sequence for a given number using a high-performance C++ implementation.
+
+### Code Example
+```{r}
+# Load the package
+library(SA24204134)
+
+n <- 20  # Choose a relatively large value for a meaningful comparison
+
+fibonacci_cpp = fibonacci_cpp(n)
+fibonacci_cpp
+```
+
+
+
+
+## Example 2: lasso_regression
+
+The function performs LASSO regression on high-dimensional data and selects the regularization parameter using the elbow method.
+
+### Code Example
+
+```{r}
+# Load the package
+library(SA24204134)
+
+# Generate dataset and fit Lasso model
+result <- generate_lasso_regression(n_samples = 100, n_features = 50, noise_level = 1)
+
+# Display optimal lambda
+cat("Optimal lambda:", result$optimal_lambda, "\n")
+
+# Plot Lasso path
+print(result$lasso_path_plot)
+
+# Plot Cross-validation error
+print(result$cv_error_plot)
+```
+
+## Example 3: sparse_matrix_threshold with C++
+
+Here is a more complex Rcpp function example that performs sparse matrix thresholding (setting elements of a matrix below a certain threshold to zero). This operation is particularly useful when working with sparse data, neural network weight matrices, or specific numerical problems.
+
+### Code Example
+
+
+```{r}
+library(SA24204134)
+
+# Create a random matrix
+mat <- matrix(rnorm(100), nrow = 10, ncol = 10)
+
+# Apply sparse matrix thresholding
+sparse_mat <- sparse_matrix_threshold_cpp(mat, 0.5)
+
+# Print the sparse matrix
+print(sparse_mat)
+
+# Verify that all values below the threshold are zero
+all(abs(sparse_mat[abs(mat) < 0.5]) == 0)
+```
+
+

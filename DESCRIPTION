@@ -1,0 +1,30 @@
+Package: SA24204134
+Type: Package
+Title: My First R Package
+Version: 1.0
+Date: 2024-12-07
+Author: Yiqi Hu
+Maintainer: Yiqi Hu <yiqi.h@outlook.com>
+Description: Several R and Rcpp function are included in this package for illustration. 
+License: GPL-3
+Imports:
+    Rcpp,
+    glmnet,
+    ggplot2,
+    microbenchmark
+Suggests:
+    knitr,
+    rmarkdown,
+    DAAG,
+    boot,
+    bootstrap,
+    coda,
+    cramer,
+    lpSolve
+LinkingTo: Rcpp
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+VignetteBuilder: knitr
+NeedsCompilation: yes
+URL: http://github.com/hu-yiqi/SA24204134
+BugReports: http://github.com/hu-yiqi/SA24204134/issues
