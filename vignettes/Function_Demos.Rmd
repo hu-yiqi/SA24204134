@@ -39,7 +39,7 @@ The function performs LASSO regression on high-dimensional data and selects the 
 ### Code Example
 
 ```{r}
-# Load the package
+# Example usage:
 library(SA24204134)
 
 # Generate dataset and fit Lasso model
@@ -48,11 +48,9 @@ result <- generate_lasso_regression(n_samples = 100, n_features = 50, noise_leve
 # Display optimal lambda
 cat("Optimal lambda:", result$optimal_lambda, "\n")
 
-# Plot Lasso path
-print(result$lasso_path_plot)
-
 # Plot Cross-validation error
 print(result$cv_error_plot)
+
 ```
 
 ## Example 3: sparse_matrix_threshold with C++

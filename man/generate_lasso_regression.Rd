@@ -20,7 +20,6 @@ This function generates a high-dimensional dataset and fits a Lasso regression m
 \dontrun{
 result <- generate_lasso_regression(100, 50, 1)
 print(result$optimal_lambda)
-print(result$lasso_path_plot)
 print(result$cv_error_plot)
 }
 }

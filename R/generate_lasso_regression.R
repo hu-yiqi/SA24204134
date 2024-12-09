@@ -12,7 +12,6 @@
 #' \dontrun{
 #' result <- generate_lasso_regression(100, 50, 1)
 #' print(result$optimal_lambda)
-#' print(result$lasso_path_plot)
 #' print(result$cv_error_plot)
 #' }
 #' @export
@@ -32,27 +31,31 @@ generate_lasso_regression <- function(n_samples = 100, n_features = 50, noise_le
 
   # Extract information for plotting
   lambda <- lasso_model$lambda
-  feature <- colnames(X)
   cv_error <- lasso_model$cvm
 
-  # Create a plot
-
-  plot_data <- data.frame(lambda = -log(lambda), cv_error = cv_error)
-  ggplot2::ggplot(plot_data, aes(x = lambda, y = cv_error)) +
+  # Cross-validation error plot
+  cv_error_plot <- ggplot2::ggplot(data.frame(lambda = -log(lambda), cv_error = cv_error),
+                                   aes(x = lambda, y = cv_error)) +
     ggplot2::geom_line() +
     ggplot2::ggtitle("Cross-Validation Error vs. Lambda") +
     ggplot2::xlab("Log(Lambda)") +
     ggplot2::ylab("CV Error") +
     ggplot2::theme_minimal()
 
+  # Lasso path plot
+  lasso_path_plot <- ggplot2::ggplot() +
+    ggplot2::ggtitle("Lasso Path (Placeholder)") +
+    ggplot2::theme_minimal()
+
   # Return results
   result <- list(
     dataset = list(X = X, y = y),
     lasso_model = lasso_model,
-    optimal_lambda = lasso_model$lambda.min
+    optimal_lambda = lasso_model$lambda.min,
+    cv_error_plot = cv_error_plot,
+    lasso_path_plot = lasso_path_plot
   )
 
   return(result)
 }
-
 
